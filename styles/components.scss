@@ -1,0 +1,226 @@
+// Custom SCSS components - Use only when Tailwind utilities aren't sufficient
+// Prefer Tailwind utilities over custom styles
+
+.flash-sale-pulse {
+  // Custom flash sale animations
+  animation: flash-pulse 2s ease-in-out infinite;
+}
+
+@keyframes flash-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+// Modern SCSS components - Use only when Tailwind utilities aren't sufficient
+// Prefer Tailwind utilities over custom styles
+
+// Enhanced loading animations
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+// Smooth scroll behavior
+.smooth-scroll {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+// Advanced hover effects
+.hover-glow {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 0 20px rgba(var(--primary), 0.3);
+    transform: translateY(-2px);
+  }
+}
+
+.hover-rotate {
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: rotate(5deg) scale(1.05);
+  }
+}
+
+// Review score animations
+.score-fill {
+  animation: score-fill-animation 1s ease-out forwards;
+  animation-delay: 0.5s;
+  width: 0;
+}
+
+@keyframes score-fill-animation {
+  to {
+    width: var(--score-width);
+  }
+}
+
+// Staggered animations for lists
+.stagger-animation {
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+  &:nth-child(4) { animation-delay: 0.4s; }
+  &:nth-child(5) { animation-delay: 0.5s; }
+  &:nth-child(6) { animation-delay: 0.6s; }
+}
+
+// Modern card effects
+.card-glass {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  .dark & {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+// Responsive mixins if needed
+@mixin mobile-only {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin large-desktop-up {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+// Modern focus styles
+@mixin focus-ring($color: var(--primary)) {
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($color, 0.5);
+    border-radius: 0.375rem;
+  }
+}
+
+// Utility classes for specific components
+.product-image-hover {
+  overflow: hidden;
+  
+  img {
+    transition: transform 0.5s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.text-gradient-animate {
+  background: linear-gradient(
+    45deg,
+    #ff6b6b,
+    #ee5a24,
+    #667eea,
+    #764ba2
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Performance optimizations
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+// Modern button hover effects
+.btn-modern-hover {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+}
